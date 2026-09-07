@@ -2,7 +2,7 @@
 <rss version="2.0">
 
 <channel>
-  <title><%= site.title %></title>
+  <title><%= CGI.escapeHTML(site.title.to_s) %></title>
   <link><%= site.url %></link>
   <language>en</language>
   <description><%= site.url %></description>

@@ -257,6 +257,7 @@ class Feed < ActiveRecord::Base
                 summary = item.summary.to_s
                 summary = summary.sub(/\A.*?Announce Type: \S+\s*\n?/m, '')
                 summary = summary.sub(/\AAbstract:\s*/m, '')
+                summary = CGI.escapeHTML(summary)
                 item.summary = summary
                 if item.authors && !item.authors.empty?
                     authors_text = item.authors[0].text.to_s

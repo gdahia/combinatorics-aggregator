@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><%= site.title %></title>
+  <title><%= CGI.escapeHTML(site.title.to_s) %></title>
   <link rel="self" href="<%= site.url %>"/>
   <link href="<%= site.url %>"/>
   <id></id>
@@ -23,7 +23,7 @@
     <%= CGI.escapeHTML(item.summary) %>
   <% end %></content>
     <author>
-      <name><%= item.feed.title %></name>
+      <name><%= CGI.escapeHTML(item.feed.title.to_s) %></name>
       <uri><%= item.feed.url %></uri>
     </author>
   </entry>

@@ -14,7 +14,7 @@
   <meta charset='utf-8'>
   <meta name='generator' content='<%= Pluto.generator %>'>
 
-  <title><%= site.title %></title>
+  <title><%= CGI.escapeHTML(site.title.to_s) %></title>
 
   <link rel="alternate" type="application/rss+xml" title="Posts (RSS)" href="rss20.xml" />
   <link rel="alternate" type="application/atom+xml" title="Posts (Atom)" href="atom.xml" />
@@ -49,7 +49,7 @@
     <% site.feeds.each do |feed| %>
       <li>
         <%= link_to( image_tag('icon/feed.png'), feed.feed_url ) %>
-        <%= link_to feed.title, feed.url %>
+        <%= link_to CGI.escapeHTML(feed.title.to_s), feed.url %>
       </li>
     <% end %>
     </ul>
@@ -70,7 +70,7 @@
     <i id='tr-show-fulltext' class="fa-solid fa-fw fa-expand tr-button" title='Show Full Text'></i>
   </div>
 
-  <h1><%= site.title %></h1>
+  <h1><%= CGI.escapeHTML(site.title.to_s) %></h1>
 
   <div class="tr-articles tr-shrink">
     <%
@@ -85,8 +85,8 @@
 
     <details class='tr-article' open>
       <summary class='tr-article-header'>
-        <h3 class='tr-article-title'><%= link_to item.title, item.url %></h3>
-        <p class='tr-article-feed'>from <%= link_to item.feed.title, item.feed.url %></p>
+        <h3 class='tr-article-title'><%= link_to CGI.escapeHTML(item.title.to_s), item.url %></h3>
+        <p class='tr-article-feed'>from <%= link_to CGI.escapeHTML(item.feed.title.to_s), item.feed.url %></p>
         <i class="fa-solid fa-fw fa-chevron-down tr-chevron"></i>
       </summary>
 

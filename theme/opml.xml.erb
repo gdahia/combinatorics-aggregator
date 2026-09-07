@@ -1,11 +1,11 @@
 <opml version="1.1">
   <head>
-    <title><%= site.title %></title>
+    <title><%= CGI.escapeHTML(site.title.to_s) %></title>
     <dateModified><%= site.updated %></dateModified>
-    <ownerName><%= site.title %></ownerName>
+    <ownerName><%= CGI.escapeHTML(site.title.to_s) %></ownerName>
   </head>
   <body>
-    <% site.feeds.each do |feed| %><outline type="rss" text="<%= feed.title %>" xmlUrl="<%= feed.url %>" title="<%= feed.title %>"/>
+    <% site.feeds.each do |feed| %><outline type="rss" text="<%= CGI.escapeHTML(feed.title.to_s) %>" xmlUrl="<%= feed.url %>" title="<%= CGI.escapeHTML(feed.title.to_s) %>"/>
     <% end %>
   </body>
 </opml>
