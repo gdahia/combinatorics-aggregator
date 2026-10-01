@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'uri'
 require 'cgi'
 require 'i18n'
+require_relative 'erdos_forum'
 
 ALLOWED_HTML_TAGS = %w[
     a b blockquote br cite code div em i img li ol p pre q span strong sub sup
@@ -200,6 +201,7 @@ end
 class FeedFetcherCondGetWithCache
     alias_method :old_fetch, :fetch
     def fetch(feed_rec)
+        return ErdosForum.fetch(feed_rec) if feed_rec.location == 'erdos-forum'
         text = old_fetch(feed_rec)
         return text
     end
